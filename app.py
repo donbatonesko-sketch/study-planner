@@ -23,13 +23,3 @@ st.write("Planowanie nauki z PDF + kalendarz 📅")
 
 st.header("📥 Wgraj materiał (PDF)")
 
-uploaded_file = st.file_uploader("Wrzuć PDF", type=["pdf"])
-
-text = ""
-
-if uploaded_file is not None:
-    reader = PdfReader(uploaded_file)
-
-    for page in reader.pages:
-        page_text = page.extract_text()
-        if page_text:
