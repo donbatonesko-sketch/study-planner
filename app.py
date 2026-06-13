@@ -6,7 +6,7 @@ import re
 from PyPDF2 import PdfReader
 
 # -------------------------
-# CONFIG (mobilny widok)
+# CONFIG
 # -------------------------
 
 st.set_page_config(
@@ -18,10 +18,10 @@ st.title("📘 Smart Study Planner")
 st.write("Planowanie nauki z PDF + kalendarz 📅")
 
 # -------------------------
-# WGRYWANIE PDF
+# PDF UPLOAD
 # -------------------------
 
-st.header("📥 Wgraj materiał")
+st.header("📥 Wgraj materiał (PDF)")
 
 uploaded_file = st.file_uploader("Wrzuć PDF", type=["pdf"])
 
@@ -29,6 +29,7 @@ text = ""
 
 if uploaded_file is not None:
     reader = PdfReader(uploaded_file)
-    
+
     for page in reader.pages:
-        if page.extract_text():
+        page_text = page.extract_text()
+        if page_text:
